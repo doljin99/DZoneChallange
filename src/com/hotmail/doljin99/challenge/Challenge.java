@@ -164,6 +164,13 @@ public class Challenge extends javax.swing.JFrame {
         jTableGenerated.validate();
     }//GEN-LAST:event_jButtonGenerateActionPerformed
 
+    /**
+     * check an symbol according to the rules
+     * 
+     * @param name  element name
+     * @param symbol    symbol of element name
+     * @return available
+     */
     private boolean validateSymbol(String name, String symbol) {
         if (name == null || name.isEmpty() || name.length() < 2) {
             return false;
@@ -172,6 +179,12 @@ public class Challenge extends javax.swing.JFrame {
             return false;
         }
         char[] nameChars = name.toLowerCase().toCharArray();
+        for (int i = 0; i < nameChars.length; i++) {
+            char nameChar = nameChars[i];
+            if (!Character.isAlphabetic(nameChar)) {
+                return false;
+            }
+        }
         char[] symbolChars = symbol.toLowerCase().toCharArray();
         for (int i = 0; i < symbolChars.length; i++) {
             char symbolChar = symbolChars[i];
@@ -185,6 +198,13 @@ public class Challenge extends javax.swing.JFrame {
         return min < max;
     }
 
+    /**
+     * check a char contained in array
+     * 
+     * @param array
+     * @param ch
+     * @return 
+     */
     private boolean contains(char[] array, char ch) {
         if (array == null) {
             return false;
@@ -200,6 +220,13 @@ public class Challenge extends javax.swing.JFrame {
         return false;
     }
 
+    /**
+     * get minimum index of a character in array
+     * 
+     * @param array container to be searched
+     * @param ch search character
+     * @return minimum index
+     */
     private int minPosition(char[] array, char ch) {
         ArrayList<Integer> positions = getPositions(array, ch);
         if (positions.size() <= 0) {
@@ -208,6 +235,13 @@ public class Challenge extends javax.swing.JFrame {
         return positions.get(0);
     }
 
+    /**
+     * get maximum index of a character in array
+     * 
+     * @param array container to be searched
+     * @param ch search character
+     * @return maximum index
+     */
     private int maxPosition(char[] array, char ch) {
         ArrayList<Integer> positions = getPositions(array, ch);
         if (positions.size() <= 0) {
@@ -230,6 +264,12 @@ public class Challenge extends javax.swing.JFrame {
         return positions;
     }
 
+    /**
+     * generate recommended symbols for given element name
+     * 
+     * @param name given element name
+     * @return recommended symbols by alphabetic sort, do not duplicated
+     */
     private ArrayList<String> generateSymbols(String name) {
         HashSet<String> codes = new HashSet<>();
         char[] chras = name.toLowerCase().toCharArray();
