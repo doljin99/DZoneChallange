@@ -165,7 +165,7 @@ public class Challenge extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGenerateActionPerformed
 
     /**
-     * check an symbol according to the rules
+     * check a symbol according to the rules
      * 
      * @param name  element name
      * @param symbol    symbol of element name
